@@ -19,7 +19,7 @@ def send_email(to, msg):
         smtp.starttls()
         smtp.ehlo()
 
-        smtp.login(creds['email_address'], creds['password'])
-        smtp.sendmail(creds['email_address'], to, msg)
+        smtp.login(creds['email_creds']['user'], creds['email_creds']['password'])
+        smtp.sendmail(creds['email_creds']['user'], to, msg)
         smtp.quit()
 

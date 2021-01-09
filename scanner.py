@@ -1,4 +1,6 @@
 import rfid
+import actions
+
 import csv
 
 # global to store the map of uids to actions
@@ -6,7 +8,8 @@ uid_map = {}
 
 
 def get_action(uid):
-    return uid_map[uid]
+    # getattr will return function in the actions module
+    return getattr(actions, uid_map[uid])
 
 
 def loop():
@@ -20,7 +23,7 @@ def loop():
 
         # perform what is mapped to that uid in the csv file
         action = get_action(formatted)
-        print(action)
+        action() # call action
 
         print('\n')
 
